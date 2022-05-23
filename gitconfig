@@ -1,0 +1,19 @@
+[http]
+	sslVerify = false
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
+	ll = log --pretty=format:%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn] --decorate --numstat --name-status
+	slog = log --pretty=format:\"%C(green)%h %C(white)%<(12,trunc)%ar %C(yellow)%<(15,trunc)%an %C(white)%s\"
+	info = remote show origin
+	uncommit = !git log --name-status HEAD^..HEAD && git reset --soft HEAD^
+[pull]
+	rebase = true
+[user]
+	email = pg@ydesign.se
+	name = Peter Gerell
