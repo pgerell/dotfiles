@@ -3,6 +3,7 @@
 SETUVAR --path CDPATH:\x2e\x1e/home/pg/repos
 SETUVAR VIRTUAL_ENV_DISABLE_PROMPT:1
 SETUVAR __fish_initialized:3100
+SETUVAR _fish_abbr_clone:git\x20clone\x20https\x3a//\x24USER\x40sirius\x2eydesign\x2ese/git\x2drepos/\x28git_repo_select\x29
 SETUVAR _fish_abbr_gh:git\x20hist
 SETUVAR _fish_abbr_gs:git\x20status
 SETUVAR _fish_abbr_l:less\x20\x28fzf\x29
