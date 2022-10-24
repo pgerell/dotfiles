@@ -70,7 +70,7 @@ Building gcc-7.2
 
     # Download source
     wget https://ftp.gnu.org/gnu/gcc/gcc-7.2.0/gcc-7.2.0.tar.xz
-    tar xvf gcc-7.2.0.tar.xz
+    tar xf gcc-7.2.0.tar.xz
     cd gcc-7.2.0/
     
     # Apply patches from:
@@ -90,7 +90,7 @@ Building gcc-4.9.3
 
     # Download source
     wget https://ftp.gnu.org/gnu/gcc/gcc-4.9.3/gcc-4.9.3.tar.gz
-    tar xvf gcc-4.9.3.tar.gz
+    tar xf gcc-4.9.3.tar.gz
     cd gcc-4.9.3/
     
     # Apply patches
