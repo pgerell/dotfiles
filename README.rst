@@ -16,7 +16,7 @@ Clone dotfiles repo
 .. code-block:: sh
 
     git clone https://github.com/pgerell/dotfiles.git
-    for f in dotfiles/*; do ln -s -f  dotfiles/`basename $f` .`basename $f`; done
+    ./dotfiles/activate.sh
     
 
 Install Fish
