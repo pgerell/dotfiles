@@ -79,7 +79,7 @@ Building gcc-7.2
     
     mkdir build
     cd build
-    ../configure --disable-multilib --prefix /opt/gcc-7.2 --enable-languages=c,c++,lto
+    ../configure --disable-multilib --prefix /opt/gcc-7.2 --enable-languages=c,c++,lto --disable-bootstrap
     make -j4
     sudo make install
 
