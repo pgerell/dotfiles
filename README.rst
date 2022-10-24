@@ -94,9 +94,9 @@ Building gcc-4.9.3
     cd gcc-4.9.3/
     
     # Apply patches
-    Add -std=gnu++11 in gcc/Makefile.in
-    Add __attribute__ ((__gnu_inline__)) to signature of libc_name_p in gfns.gperf and gfns.h
-    Replace struct ucontext with ucontext_t
+    #   Add -std=gnu++11 in gcc/Makefile.in
+    #   Add __attribute__ ((__gnu_inline__)) to signature of libc_name_p in gfns.gperf and gfns.h
+    #   Replace struct ucontext with ucontext_t
     
     mkdir build
     cd build
