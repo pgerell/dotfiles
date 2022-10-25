@@ -19,30 +19,47 @@ Clone dotfiles repo
     ./dotfiles/activate.sh
     
 
-Install Fish + Oh-my-fish
--------------------------
+Configure shell + tools
+-----------------------
+
+Install fish+fisher+theme
 
 .. code-block:: sh
 
     sudo apt-add-repository ppa:fish-shell/release-3
     sudo apt update
     sudo apt install fish
-    curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
-    
-    
+    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+    fisher install oh-my-fish/theme-agnoster
+
 Set fish as default shell
 
 .. code-block:: sh
 
     chsh -s /usr/bin/fish
 
+Install utilities
+
+.. code-block:: sh
+
+    sudo apt install fd-find bat fzf
+    alias bat=batcat
+    alias fd=fdfind
+    
+Install Certificate
+-------------------
+
+.. code-block:: sh
+
+    sudo wget --no-check-certificate -P /usr/local/share/ca-certificates/ https://sirius.ydesign.se/wiki/pub/IT/InstallRootCert/yDesign_Root_CA.crt
+    sudo update-ca-certificates
 
 Install Development Tools
 -------------------------
 
 .. code-block:: sh
 
-    sudo apt install cmake ninja-build graphviz g++ dos2unix -y
+    sudo apt install cmake ninja-build graphviz g++ dos2unix python3.10-venv -y
     
 
 
