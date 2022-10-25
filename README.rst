@@ -8,7 +8,7 @@ Start with an update
 
    sudo apt update
    sudo apt upgrade
-
+   
 
 Clone dotfiles repo
 -------------------
@@ -19,21 +19,16 @@ Clone dotfiles repo
     ./dotfiles/activate.sh
     
 
-Install Fish
-------------
+Install Fish + Oh-my-fish
+-------------------------
 
 .. code-block:: sh
 
     sudo apt-add-repository ppa:fish-shell/release-3
     sudo apt update
     sudo apt install fish
-    
-Oh-my-fish
-..........
-
-.. code-block:: sh
-
     curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+    
     
 Set fish as default shell
 
@@ -47,8 +42,36 @@ Install Development Tools
 
 .. code-block:: sh
 
-    sudo apt install cmake ninja-build graphviz g++ -y
+    sudo apt install cmake ninja-build graphviz g++ dos2unix -y
     
+
+
+Installing clang
+----------------
+    
+.. code-block:: sh
+
+    wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+    sudo add-apt-repository 'deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-15 main'
+    sudo apt update
+    sudo apt install clang-15 lld-15 clang-tools-15 libomp-15-dev
+    sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-15 1500
+    sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-15 1500
+    sudo update-alternatives --install /usr/bin/lld lld /usr/bin/lld-15 1500
+
+Build libarcher
+...............
+
+.. code-block:: sh
+
+    git clone https://github.com/llvm/llvm-project.git
+    cd llvm-project/
+    git switch release/15.x
+    mkdir build
+    CC=clang CXX=clang++ cmake -G Ninja ../openmp
+    sudo cp tools/archer/libarcher.so /usr/local/lib/libarcher.so
+
+
 
 Building older versions of gcc
 ------------------------------
@@ -58,9 +81,7 @@ Installing dependencies
 
 .. code-block:: sh
 
-    sudo apt install libgmp-dev
-    sudo apt install libmpfr-dev
-    sudo apt install libmpc-dev
+    sudo apt install libgmp-dev libmpfr-dev libmpc-dev
     
 
 Building gcc-7.2
@@ -72,14 +93,11 @@ Building gcc-7.2
     wget https://ftp.gnu.org/gnu/gcc/gcc-7.2.0/gcc-7.2.0.tar.xz
     tar xf gcc-7.2.0.tar.xz
     cd gcc-7.2.0/
-    
-    # Apply patches from:
-    #   https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=4abc46b51af5751
-    #   https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=71b55d45e4304f5
-    
+
+    # Build
     mkdir build
     cd build
-    ../configure --disable-multilib --prefix /opt/gcc-7.2 --enable-languages=c,c++,lto --disable-bootstrap
+    CXXFLAGS='-O2' ../configure --disable-multilib --prefix /opt/gcc-7.2 --enable-languages=c,c++,lto --disable-bootstrap --disable-libsanitizer
     make -j4
     sudo make install
 
@@ -93,14 +111,25 @@ Building gcc-4.9.3
     tar xf gcc-4.9.3.tar.gz
     cd gcc-4.9.3/
     
-    # Apply patches
-    #   Add -std=gnu++11 in gcc/Makefile.in
-    #   Add __attribute__ ((__gnu_inline__)) to signature of libc_name_p in gfns.gperf and gfns.h
-    #   Replace struct ucontext with ucontext_t
-    
+    # Patch source
+    for f in (grep -Ir -l 'struct ucontext')
+        sed -i 's/struct ucontext/ucontext_t/g' $f
+    end
+    for f in gcc/cp/cfns.gperf gcc/cp/cfns.h
+        sed -i 's/const char \* libc_name_p/__attribute__ ((__gnu_inline__)) const char * libc_name_p/g' $f
+    end
+
+    # Build 
     mkdir build
     cd build
-    ../configure --disable-multilib --prefix /opt/gcc-4.9.3 --enable-languages=c,c++,lto --disable-bootstrap --disable-libsanitizer
+    CXXFLAGS='-std=gnu++11 -O2' ../configure --disable-multilib --prefix /opt/gcc-4.9.3 --enable-languages=c,c++,lto --disable-bootstrap --disable-libsanitizer
     make -j4
     sudo make install
     
+Removing dependencies
+.....................
+
+.. code-block:: sh
+    
+    sudo apt remove libgmp-dev libmpfr-dev libmpc-dev
+
