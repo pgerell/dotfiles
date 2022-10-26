@@ -1,0 +1,9 @@
+#!/bin/bash
+# WSL 'fd' wrapper
+
+REALPATH=`readlink -f ${PWD}`
+if [ "${REALPATH:0:5}" == "/mnt/" ]; then
+  fd.exe --path-separator '/' "$@"
+else
+  /usr/bin/fdfind "$@"
+fi
