@@ -1,11 +1,11 @@
 #!/bin/bash
-# WSL 'git' wrapper, save as /usr/local/bin/git and chmod a+x
+# WSL 'git' wrapper
 
 if [[ -v JENKINS_HOME ]]; then
   /usr/bin/git "$@"
 else
   REALPATH=`readlink -f ${PWD}`
-  if [  "${REALPATH:0:5}" == "/mnt/" ]; then
+  if [ "${REALPATH:0:5}" == "/mnt/" ]; then
     git.exe "$@"
   else
     /usr/bin/git "$@"

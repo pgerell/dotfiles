@@ -1,15 +1,16 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export ASAN_OPTIONS:strict_string_checks\x3d1\x3acheck_initialization_order\x3d1\x3astrict_init_order\x3d1
+SETUVAR --export FZF_DEFAULT_COMMAND:/home/default/dotfiles/bin/fd\x20\x2d\x2dtype\x20f
 SETUVAR --export OMP_TOOL_LIBRARIES:/usr/local/lib/libarcher\x2eso
 SETUVAR --export TSAN_OPTIONS:ignore_noninstrumented_modules\x3d1
 SETUVAR --export UBSAN_OPTIONS:halt_on_error\x3d1\x3aprint_stacktrace\x3d1
 SETUVAR VIRTUAL_ENV_DISABLE_PROMPT:1
 SETUVAR __fish_initialized:3400
 SETUVAR _fish_abbr_clone:git\x20clone\x20https\x3a//\x24USER\x40sirius\x2eydesign\x2ese/git\x2drepos/\x28git_repo_select\x29
-SETUVAR _fish_abbr_gh:git\x20hist
-SETUVAR _fish_abbr_gs:git\x20status
-SETUVAR _fish_abbr_l:less\x20\x28fzf\x29
+SETUVAR _fish_abbr_la:exa\x20\x2dla\x20\x2d\x2dheader
+SETUVAR _fish_abbr_less:bat
+SETUVAR _fish_abbr_ll:exa\x20\x2dl\x20\x2d\x2dheader\x20\x2d\x2dicons
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_oh_2D_my_2D_fish_2F_theme_2D_agnoster_files:\x7e/\x2econfig/fish/functions/fish_mode_prompt\x2efish\x1e\x7e/\x2econfig/fish/functions/fish_prompt\x2efish\x1e\x7e/\x2econfig/fish/functions/fish_right_prompt\x2efish
 SETUVAR _fisher_patrickf1_2F_fzf_2E_fish_files:\x7e/\x2econfig/fish/functions/_fzf_configure_bindings_help\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_extract_var_info\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_changed_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_diff_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_file_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_directory\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_log\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_status\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_history\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_processes\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_variables\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_wrapper\x2efish\x1e\x7e/\x2econfig/fish/functions/fzf_configure_bindings\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/fzf\x2efish\x1e\x7e/\x2econfig/fish/completions/fzf_configure_bindings\x2efish
@@ -57,3 +58,4 @@ SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
 SETUVAR fish_prompt_pwd_dir_length:0
+SETUVAR fzf_preview_dir_cmd:exa\x1e\x2d\x2dall\x1e\x2d\x2dcolor\x3dalways\x1e\x2d\x2dicons\x1e\x2d\x2dlong\x1e\x2d\x2dno\x2duser
