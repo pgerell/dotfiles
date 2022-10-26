@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export ASAN_OPTIONS:strict_string_checks\x3d1\x3acheck_initialization_order\x3d1\x3astrict_init_order\x3d1
+SETUVAR --export BAT_THEME:Solarized\x20\x28dark\x29
 SETUVAR --export FZF_DEFAULT_COMMAND:/home/default/dotfiles/bin/fd\x20\x2d\x2dtype\x20f
 SETUVAR --export OMP_TOOL_LIBRARIES:/usr/local/lib/libarcher\x2eso
 SETUVAR --export TSAN_OPTIONS:ignore_noninstrumented_modules\x3d1
