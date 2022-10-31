@@ -1,0 +1,9 @@
+#!/bin/bash
+# WSL ripgrep wrapper
+
+REALPATH=`readlink -f ${PWD}`
+if [ "${REALPATH:0:5}" == "/mnt/" ]; then
+  rg.exe --path-separator '/' "$@"
+else
+  /usr/bin/rg "$@"
+fi
