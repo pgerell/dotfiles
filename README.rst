@@ -28,7 +28,7 @@ Install fish+fisher+theme
 
     sudo apt-add-repository ppa:fish-shell/release-3
     sudo apt update
-    sudo apt install fish
+    sudo apt install fish -y
     curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
     fisher install oh-my-fish/theme-agnoster
 
@@ -42,7 +42,7 @@ Install utilities
 
 .. code-block:: sh
 
-    sudo apt install fd-find bat fzf
+    sudo apt install fd-find bat fzf ripgrep binfmt-support -y
     alias bat=batcat
     alias fd=fdfind
     
@@ -61,7 +61,14 @@ Install Development Tools
 
     sudo apt install cmake ninja-build graphviz g++ dos2unix python3.10-venv -y
     
+Install Latex Tools
+-------------------
 
+.. code-block:: sh
+
+    sudo apt install latexmk texlive-latex-recommended texlive-latex-extra liblatex-driver-perl -y
+    sudo apt install texlive-fonts-recommended texlive-fonts-extra -y
+    sudo apt install dvipng  mscgen librsvg2-bin enchant-2 -y
 
 Installing clang
 ----------------
@@ -71,7 +78,7 @@ Installing clang
     wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
     sudo add-apt-repository 'deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-15 main'
     sudo apt update
-    sudo apt install clang-15 lld-15 clang-tools-15 libomp-15-dev
+    sudo apt install clang-15 lld-15 clang-tools-15 libomp-15-dev -y
     sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-15 1500
     sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-15 1500
     sudo update-alternatives --install /usr/bin/lld lld /usr/bin/lld-15 1500
@@ -89,7 +96,6 @@ Build libarcher
     sudo cp tools/archer/libarcher.so /usr/local/lib/libarcher.so
 
 
-
 Building older versions of gcc
 ------------------------------
 
@@ -98,7 +104,7 @@ Installing dependencies
 
 .. code-block:: sh
 
-    sudo apt install libgmp-dev libmpfr-dev libmpc-dev
+    sudo apt install libgmp-dev libmpfr-dev libmpc-dev -y
     
 
 Building gcc-7.2
@@ -150,3 +156,14 @@ Removing dependencies
     
     sudo apt remove libgmp-dev libmpfr-dev libmpc-dev
 
+Installing tools for building VS Code extensions
+------------------------------------------------
+
+.. code-block:: sh
+
+    fisher install jorgebucaran/nvm.fish
+    nvm install 16.14.0
+    nvm use 16.14.0
+    npm install --global all-the-package-names
+    npm install --global vsce
+    sudo apt install libsecret-1-dev -y
