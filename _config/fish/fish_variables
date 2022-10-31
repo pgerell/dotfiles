@@ -60,5 +60,4 @@ SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
 SETUVAR fish_prompt_pwd_dir_length:0
 SETUVAR fzf_preview_dir_cmd:exa\x1e\x2d\x2dall\x1e\x2d\x2dcolor\x3dalways\x1e\x2d\x2dicons\x1e\x2d\x2dlong\x1e\x2d\x2dno\x2duser
-SETUVAR nvm_data:/home/pg/\x2elocal/share/nvm
 SETUVAR nvm_mirror:https\x3a//nodejs\x2eorg/dist
