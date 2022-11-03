@@ -25,10 +25,10 @@ function _y_build_directory --description 'Searches for build directories. Repla
     # unescape token because it's already quoted so backslashes will mess up the path
     set unescaped_exp_token (string unescape -- $expanded_token)
 
-    set git_root (git rev-parse --show-toplevel 2> /dev/null)
     set git_root_wsl qwerty12345
+    set git_root (git rev-parse --show-toplevel 2> /dev/null)
     if test $status -eq 0
-        set git_root_wsl (wslpath "$git_root")
+        set git_root_wsl (y_wslpath "$git_root")
     end
 
     set --prepend fzf_arguments --query="$unescaped_exp_token" --preview='_y_preview_build_directory {}'
