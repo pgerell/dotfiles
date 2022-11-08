@@ -27,16 +27,11 @@ function _y_build_directory --description 'Searches for build directories. Repla
 
     set git_root_wsl qwerty12345
     set git_root (git rev-parse --show-toplevel 2> /dev/null)
-    if test $status -eq 0
-        set git_root_wsl (y_wslpath "$git_root")
-    end
+    and set git_root_wsl (y_wslpath "$git_root")
 
     set --prepend fzf_arguments --query="$unescaped_exp_token" --preview='_y_preview_build_directory {}'
     set file_path_selected (/usr/bin/fdfind $fd_opts 2>/dev/null | _y_color_green $git_root_wsl | sed 's/\/CMakeCache.txt//g' | _fzf_wrapper $fzf_arguments)
-
-    if test $status -eq 0
-        commandline --current-token --replace -- (string escape -- $file_path_selected)
-    end
+    and commandline --current-token --replace -- (string escape -- $file_path_selected)
 
     commandline --function repaint
 end
